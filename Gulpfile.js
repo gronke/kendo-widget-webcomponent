@@ -36,6 +36,7 @@ gulp.task('clean', function() {
 gulp.task('typescript', function() {
 
   var tsResult = gulp.src(path.join(config.src, 'kendo-widget-webcomponent.ts'))
+  .pipe(plugins.sourcemaps.init())
   .pipe(plugins.typescript({
     declaration: true
   }));
@@ -43,6 +44,7 @@ gulp.task('typescript', function() {
   return merge([
     tsResult.dts.pipe(gulp.dest(config.dist)),
     tsResult.js
+      .pipe(plugins.sourcemaps.write('.'))
       .pipe(gulp.dest(config.dist))
   ]);
 

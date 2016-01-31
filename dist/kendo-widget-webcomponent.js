@@ -9,16 +9,17 @@ var KendoWidgetWebcomponent = (function () {
             document.body.appendChild(templateElement);
         });
     };
-    KendoWidgetWebcomponent.createWidget = function (name, prototype) {
+    KendoWidgetWebcomponent.createWidget = function (name, widgetOptions, prototype) {
+        if (prototype === void 0) { prototype = kendo.ui.Widget; }
         var template = KendoWidgetWebcomponent.getTemplate.call(KendoWidgetWebcomponent, name);
-        var Widget = kendo.ui.Widget.extend({
+        var Widget = prototype.extend({
             init: function (element, options) {
                 if (template) {
                     jQuery(element).append(template.innerHTML);
                 }
-                kendo.ui.Widget.fn.init.call(this, element, options);
-                if (prototype.init) {
-                    prototype.init.call(this, element, options);
+                prototype.fn.init.call(this, element, options);
+                if (widgetOptions.init) {
+                    widgetOptions.init.call(this, element, options);
                 }
             },
             options: {

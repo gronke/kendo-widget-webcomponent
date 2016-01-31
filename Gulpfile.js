@@ -40,7 +40,11 @@ gulp.task('typescript', function() {
     declaration: true
   }));
 
-  return tsResult.js.pipe(gulp.dest(config.dist));
+  return merge([
+    tsResult.dts.pipe(gulp.dest(config.dist)),
+    tsResult.js
+      .pipe(gulp.dest(config.dist))
+  ]);
 
 });
 

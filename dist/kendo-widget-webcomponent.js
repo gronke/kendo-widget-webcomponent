@@ -3,12 +3,10 @@
 'use strict';
 var KendoWidgetWebcomponent = (function () {
     function KendoWidgetWebcomponent() {
-        this.verbose = false;
     }
     KendoWidgetWebcomponent.injectTemplates = function () {
         this.forEachLocalKendoTemplate(function (templateElement) {
             document.body.appendChild(templateElement);
-            console.log('Inject Template', templateElement.getAttribute('name'));
         });
     };
     KendoWidgetWebcomponent.createWidget = function (name, prototype) {

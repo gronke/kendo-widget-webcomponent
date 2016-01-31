@@ -4,12 +4,9 @@
 
 class KendoWidgetWebcomponent {
 
-    public verbose: Boolean = false;
-
     static injectTemplates() {
         this.forEachLocalKendoTemplate((templateElement) => {
             document.body.appendChild(templateElement);
-            console.log('Inject Template', templateElement.getAttribute('name'));
         });
     }
 

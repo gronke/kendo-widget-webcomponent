@@ -1,4 +1,5 @@
 /// <reference path="../typings/HTML5Document.d.ts" />
+/// <reference path="../typings/kendo-ui/kendo-ui.d.ts" />
 'use strict';
 var KendoWidgetWebcomponent = (function () {
     function KendoWidgetWebcomponent() {
@@ -7,8 +8,31 @@ var KendoWidgetWebcomponent = (function () {
     KendoWidgetWebcomponent.injectTemplates = function () {
         this.forEachLocalKendoTemplate(function (templateElement) {
             document.body.appendChild(templateElement);
-            console.log('Registered Template', templateElement.getAttribute('name'));
+            console.log('Inject Template', templateElement.getAttribute('name'));
         });
+    };
+    KendoWidgetWebcomponent.createWidget = function (name, prototype) {
+        var template = KendoWidgetWebcomponent.getTemplate.call(KendoWidgetWebcomponent, name);
+        var Widget = kendo.ui.Widget.extend({
+            init: function (element, options) {
+                if (template) {
+                    jQuery(element).append(template.innerHTML);
+                }
+                kendo.ui.Widget.fn.init.call(this, element, options);
+                if (prototype.init) {
+                    prototype.init.call(this, element, options);
+                }
+            },
+            options: {
+                name: name
+            }
+        });
+        kendo.ui.plugin(Widget);
+        return Widget;
+    };
+    KendoWidgetWebcomponent.getTemplate = function (name) {
+        return this.getLocalDocument()
+            .querySelector('script[type="text/x-kendo-template"][name="' + name + '"]');
     };
     KendoWidgetWebcomponent.appendToTargetElement = function () {
         return document.body;
@@ -26,3 +50,5 @@ var KendoWidgetWebcomponent = (function () {
     };
     return KendoWidgetWebcomponent;
 })();
+
+//# sourceMappingURL=kendo-widget-webcomponent.js.map

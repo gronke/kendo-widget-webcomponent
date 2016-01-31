@@ -1,0 +1,50 @@
+{
+  "name": "kendo-widget-webcomponent",
+  "version": "0.0.1",
+  "description": "Use HTML5 Imports to load Kendo UI templates",
+  "main": "dist/kendo-widget-webcomponent.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gronke/kendo-widget-webcomponent.git"
+  },
+  "keywords": [
+    "kendo",
+    "async",
+    "widget",
+    "typescript",
+    "webcomponents"
+  ],
+  "author": {
+    "name": "Stefan Grönke",
+    "email": "stefan@gronke.net"
+  },
+  "contributors": [
+    {
+      "name": "Stefan Grönke",
+      "email": "stefan@gronke.net"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gronke/kendo-widget-webcomponent/issues"
+  },
+  "homepage": "https://github.com/gronke/kendo-widget-webcomponent#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-mocha-phantomjs": "^0.10.1",
+    "gulp-typescript": "^2.9.2",
+    "install": "^0.3.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.3.3",
+    "rmdir": "^1.1.0",
+    "merge2": "^1.0.0",
+    "run-sequence": "^1.1.4"
+  }
+}

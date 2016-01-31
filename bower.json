@@ -1,0 +1,31 @@
+{
+  "name": "kendo-widget-webcomponent",
+  "version": "0.0.1",
+  "authors": [
+    "Stefan Grönke <stefan@gronke.net>"
+  ],
+  "description": "Use HTML5 Imports to load Kendo UI widgets",
+  "main": "index.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "kendo",
+    "widget",
+    "typescript",
+    "async",
+    "webcomponents"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kendo-ui": "kendo-ui-core#master"
+  }
+}

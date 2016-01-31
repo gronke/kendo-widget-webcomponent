@@ -22,6 +22,7 @@ Development
 ```bash
 npm install --only=dev
 bower install
+./node_modules/tsd/build/cli.js install
 ```
 
 ### Run Unit Tests

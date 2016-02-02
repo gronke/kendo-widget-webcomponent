@@ -4,9 +4,16 @@
 
 class KendoWidgetWebcomponent {
 
-    static injectTemplates() {
-        this.forEachLocalKendoTemplate((templateElement) => {
+    static injectTemplate(templateElement: HTMLScriptElement) {
+        if(!document.getElementById(templateElement.id)) {
             document.body.appendChild(templateElement);
+        }
+    }
+
+    static injectTemplates() {
+        var that = this;
+        this.forEachLocalKendoTemplate((templateElement) => {
+            that.injectTemplate(templateElement);
         });
     }
 

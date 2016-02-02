@@ -4,9 +4,15 @@
 var KendoWidgetWebcomponent = (function () {
     function KendoWidgetWebcomponent() {
     }
-    KendoWidgetWebcomponent.injectTemplates = function () {
-        this.forEachLocalKendoTemplate(function (templateElement) {
+    KendoWidgetWebcomponent.injectTemplate = function (templateElement) {
+        if (!document.getElementById(templateElement.id)) {
             document.body.appendChild(templateElement);
+        }
+    };
+    KendoWidgetWebcomponent.injectTemplates = function () {
+        var that = this;
+        this.forEachLocalKendoTemplate(function (templateElement) {
+            that.injectTemplate(templateElement);
         });
     };
     KendoWidgetWebcomponent.createWidget = function (name, widgetOptions, prototype) {
@@ -28,6 +34,9 @@ var KendoWidgetWebcomponent = (function () {
         });
         kendo.ui.plugin(Widget);
         return Widget;
+    };
+    KendoWidgetWebcomponent.getTemplateContent = function (name) {
+        return this.getTemplate(name).innerHTML;
     };
     KendoWidgetWebcomponent.getTemplate = function (name) {
         return this.getLocalDocument()

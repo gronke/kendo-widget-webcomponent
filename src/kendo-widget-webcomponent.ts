@@ -39,6 +39,10 @@ class KendoWidgetWebcomponent {
 
     }
 
+    static getTemplateContent(name: String): String {
+        return this.getTemplate(name).innerHTML;
+    }
+
     static getTemplate(name: String): HTMLElement {
         return <HTMLElement>this.getLocalDocument()
             .querySelector('script[type="text/x-kendo-template"][name="' + name + '"]');
